@@ -1,0 +1,152 @@
+Initializing BDD100K Object Detection Pipeline Context...
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 46.9/46.9 kB 2.0 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.4/1.4 MB 36.6 MB/s eta 0:00:0000:01
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 96.5/96.5 kB 5.1 MB/s eta 0:00:00
+Creating new Ultralytics Settings v0.0.8 file ✅ 
+View Ultralytics Settings with 'yolo settings' or at '/root/.config/Ultralytics/settings.json'
+Update Settings with 'yolo settings key=value', i.e. 'yolo settings runs_dir=path/to/dir'. For help see https://docs.ultralytics.com/usage/settings.
+Starting pipeline training run...
+Downloading https://github.com/ultralytics/assets/releases/download/v8.4.0/yolov8n.pt to 'yolov8n.pt': 100% ━━━━━━━━━━━━ 6.2MB 31.6MB/s 0.2s.1s<0.3s
+Ultralytics 8.4.174 🚀 Python-3.13.15 torch-2.11.0+cu128 CUDA:0 (Tesla T4, 14912MiB)
+engine/trainer: agnostic_nms=False, amp=True, angle=1.0, augment=False, auto_augment=randaugment, batch=32, bgr=0.0, box=10.5, cache=False, cfg=None, channels_last=None, classes=None, close_mosaic=10, cls=2.0, cls_pw=0.0, cls_remap=True, compile=False, conf=None, copy_paste=0.0, copy_paste_mode=flip, cos_lr=False, cutmix=0.0, data=/kaggle/working/bdd100k_pipeline/bdd100k_5classes.yaml, degrees=0.0, deterministic=True, device=0, dfl=1.5, dgrad=0.5, dis=6.0, distill_model=None, dlam=1.0, dlog=1.0, dnn=False, dropout=0.0, dynamic=False, embed=None, epochs=10, erasing=0.4, exist_ok=False, fliplr=0.5, flipud=0.0, format=torchscript, fraction=1.0, freeze=None, hsv_h=0.015, hsv_s=0.7, hsv_v=0.4, imgsz=640, iou=0.7, kobj=1.0, line_width=None, lr0=0.01, lrf=0.01, mask_ratio=4, max_det=300, mixup=0.0, mode=train, model=yolov8n.pt, momentum=0.937, mosaic=1.0, multi_scale=0.0, name=bdd100k_improved, nbs=64, nms=None, opset=None, optimize=False, optimizer=auto, overlap_mask=True, patience=100, perspective=0.0, plots=True, pose=12.0, pretrained=True, profile=False, project=None, quantize=None, rect=False, resume=False, retina_masks=False, rle=1.0, save=True, save_conf=False, save_crop=False, save_dir=/kaggle/working/runs/detect/bdd100k_improved, save_frames=False, save_json=False, save_period=-1, save_txt=False, scale=0.6, seed=0, shear=0.0, show=False, show_boxes=True, show_conf=True, show_labels=True, simplify=True, single_cls=False, source=None, split=val, stream_buffer=False, task=detect, time=None, tracker=tracktrack.yaml, translate=0.1, val=True, verbose=True, vid_stride=1, visualize=False, warmup_bias_lr=0.1, warmup_epochs=3.0, warmup_momentum=0.8, weight_decay=0.0005, workers=4, workspace=None
+Downloading https://ultralytics.com/assets/Arial.ttf to '/root/.config/Ultralytics/Arial.ttf': 100% ━━━━━━━━━━━━ 755.1KB 13.4MB/s 0.1s
+Overriding model.yaml nc=80 with nc=5
+
+                   from  n    params  module                                       arguments                     
+  0                  -1  1       464  ultralytics.nn.modules.conv.Conv             [3, 16, 3, 2]                 
+  1                  -1  1      4672  ultralytics.nn.modules.conv.Conv             [16, 32, 3, 2]                
+  2                  -1  1      7360  ultralytics.nn.modules.block.C2f             [32, 32, 1, True]             
+  3                  -1  1     18560  ultralytics.nn.modules.conv.Conv             [32, 64, 3, 2]                
+  4                  -1  2     49664  ultralytics.nn.modules.block.C2f             [64, 64, 2, True]             
+  5                  -1  1     73984  ultralytics.nn.modules.conv.Conv             [64, 128, 3, 2]               
+  6                  -1  2    197632  ultralytics.nn.modules.block.C2f             [128, 128, 2, True]           
+  7                  -1  1    295424  ultralytics.nn.modules.conv.Conv             [128, 256, 3, 2]              
+  8                  -1  1    460288  ultralytics.nn.modules.block.C2f             [256, 256, 1, True]           
+  9                  -1  1    164608  ultralytics.nn.modules.block.SPPF            [256, 256, 5]                 
+ 10                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']          
+ 11             [-1, 6]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 12                  -1  1    148224  ultralytics.nn.modules.block.C2f             [384, 128, 1]                 
+ 13                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']          
+ 14             [-1, 4]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 15                  -1  1     37248  ultralytics.nn.modules.block.C2f             [192, 64, 1]                  
+ 16                  -1  1     36992  ultralytics.nn.modules.conv.Conv             [64, 64, 3, 2]                
+ 17            [-1, 12]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 18                  -1  1    123648  ultralytics.nn.modules.block.C2f             [192, 128, 1]                 
+ 19                  -1  1    147712  ultralytics.nn.modules.conv.Conv             [128, 128, 3, 2]              
+ 20             [-1, 9]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 21                  -1  1    493056  ultralytics.nn.modules.block.C2f             [384, 256, 1]                 
+ 22        [15, 18, 21]  1    752287  ultralytics.nn.modules.head.Detect           [5, 16, None, [64, 128, 256]] 
+Model summary: 129 layers, 3,011,823 parameters, 3,011,807 gradients, 8.2 GFLOPs
+
+Remapped 3/5 cls head rows from pretrained weights by class name
+Transferred 322/355 items from pretrained weights
+Freezing layer 'model.22.dfl.conv.weight'
+AMP: running Automatic Mixed Precision (AMP) checks...
+AMP: downloading yolo26n.pt for AMP checks (one-time, not used for training)...
+Downloading https://github.com/ultralytics/assets/releases/download/v8.4.0/yolo26n.pt to 'weights/yolo26n.pt': 100% ━━━━━━━━━━━━ 5.3MB 26.7MB/s 0.2s.1s<0.3s
+AMP: checks passed ✅
+WARNING ⚠️ train: Slow image access detected (ping: 0.2±0.3 ms, read: 6.3±3.1 MB/s, size: 64.0 KB). Use local storage instead of remote/mounted storage for better performance. See https://docs.ultralytics.com/guides/model-training-tips
+train: Scanning /kaggle/working/bdd100k_pipeline/train/labels... 12000 images, 69 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 12000/12000 264.7it/s 45.3s0.1s
+train: New cache created: /kaggle/working/bdd100k_pipeline/train/labels.cache
+albumentations: Blur(p=0.01, blur_limit=(3, 7)), MedianBlur(p=0.01, blur_limit=(3, 7)), ToGray(p=0.01, method='weighted_average', num_output_channels=3), CLAHE(p=0.01, clip_limit=(1.0, 4.0), tile_grid_size=(8, 8))
+WARNING ⚠️ val: Slow image access detected (ping: 0.0±0.0 ms, read: 3.8±0.5 MB/s, size: 56.2 KB). Use local storage instead of remote/mounted storage for better performance. See https://docs.ultralytics.com/guides/model-training-tips
+val: Scanning /kaggle/working/bdd100k_pipeline/val/labels... 2000 images, 16 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 2000/2000 198.4it/s 10.1s0.1s
+val: New cache created: /kaggle/working/bdd100k_pipeline/val/labels.cache
+optimizer: 'optimizer=auto' found, ignoring 'lr0=0.01' and determining best 'optimizer' and 'lr0' automatically... 
+optimizer: AdamW(lr=0.001111, momentum=0.9) with parameter groups 57 weight(decay=0.0), 64 weight(decay=0.0005), 63 bias(decay=0.0)
+Plotting labels to /kaggle/working/runs/detect/bdd100k_improved/labels.jpg... 
+Using 12000 train, 2000 val images for fraction=1.0 at imgsz=640
+Using 2 dataloader workers
+Logging results to /kaggle/working/runs/detect/bdd100k_improved
+Starting training for 10 epochs...
+Closing dataloader mosaic
+albumentations: Blur(p=0.01, blur_limit=(3, 7)), MedianBlur(p=0.01, blur_limit=(3, 7)), ToGray(p=0.01, method='weighted_average', num_output_channels=3), CLAHE(p=0.01, clip_limit=(1.0, 4.0), tile_grid_size=(8, 8))
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       1/10      3.83G      2.292      6.455      1.107        394        640: 100% ━━━━━━━━━━━━ 375/375 3.8it/s 1:390.2sss
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 32/32 2.9it/s 11.2s0.3s
+                   all       2000      24553      0.409       0.28      0.268      0.147
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       2/10      4.03G      2.285       5.25      1.141        352        640: 0% ──────────── 0/375  0.2s
+/usr/local/lib/python3.13/dist-packages/ray/train/_internal/session.py:683: UserWarning: `get_trial_id` is meant to only be called inside a function that is executed by a Tuner or Trainer. Returning `None`.
+  warnings.warn(
+       2/10      4.03G      2.206      4.405      1.089        388        640: 100% ━━━━━━━━━━━━ 375/375 3.9it/s 1:350.2sss
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 32/32 3.3it/s 9.7s0.3s
+                   all       2000      24553      0.426      0.319      0.307      0.168
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       3/10      4.04G      2.174       4.13      1.079        382        640: 100% ━━━━━━━━━━━━ 375/375 3.8it/s 1:380.2sss
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 32/32 3.4it/s 9.4s0.3s
+                   all       2000      24553      0.568      0.291       0.32      0.177
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       4/10      4.04G      2.142      3.963      1.074        405        640: 100% ━━━━━━━━━━━━ 375/375 3.9it/s 1:370.2sss
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 32/32 3.3it/s 9.6s0.3s
+                   all       2000      24553      0.478       0.34      0.329       0.18
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       5/10      4.04G      2.101      3.784      1.062        389        640: 100% ━━━━━━━━━━━━ 375/375 3.9it/s 1:370.2sss
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 32/32 3.3it/s 9.7s0.3s
+                   all       2000      24553      0.467      0.333      0.345      0.192
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       6/10      4.04G      2.063      3.651      1.051        348        640: 100% ━━━━━━━━━━━━ 375/375 3.9it/s 1:370.2sss
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 32/32 3.3it/s 9.8s0.3s
+                   all       2000      24553      0.486      0.374      0.369       0.21
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       7/10      4.04G      2.028      3.513      1.039        373        640: 100% ━━━━━━━━━━━━ 375/375 3.8it/s 1:390.3sss
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 32/32 3.4it/s 9.4s0.3s
+                   all       2000      24553      0.508      0.367      0.387       0.22
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       8/10      4.04G      2.001      3.415      1.028        368        640: 100% ━━━━━━━━━━━━ 375/375 3.8it/s 1:390.2sss
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 32/32 3.4it/s 9.3s0.3s
+                   all       2000      24553      0.536      0.377      0.394       0.23
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       9/10      4.04G      1.974      3.319      1.021        356        640: 100% ━━━━━━━━━━━━ 375/375 3.8it/s 1:390.2sss
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 32/32 3.4it/s 9.4s0.3s
+                   all       2000      24553      0.539      0.389      0.413      0.242
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      10/10      4.04G       1.95      3.237      1.014        415        640: 100% ━━━━━━━━━━━━ 375/375 3.7it/s 1:400.3sss
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 32/32 3.4it/s 9.5s0.3s
+                   all       2000      24553      0.567      0.416      0.438      0.258
+
+10 epochs completed in 0.301 hours.
+Optimizer stripped from /kaggle/working/runs/detect/bdd100k_improved/weights/last.pt, 6.2MB
+Optimizer stripped from /kaggle/working/runs/detect/bdd100k_improved/weights/best.pt, 6.2MB
+
+Validating /kaggle/working/runs/detect/bdd100k_improved/weights/best.pt...
+Ultralytics 8.4.174 🚀 Python-3.13.15 torch-2.11.0+cu128 CUDA:0 (Tesla T4, 14912MiB)
+Model summary (fused): 72 layers, 3,006,623 parameters, 0 gradients, 8.1 GFLOPs
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 32/32 2.5it/s 13.0s0.4s
+                   all       2000      24553      0.567      0.414      0.438      0.258
+                   car       1974      20289       0.67      0.637       0.67      0.397
+                   bus        247        311      0.441      0.392      0.382       0.28
+                 truck        545        872       0.57      0.445      0.472      0.309
+            pedestrian        663       2748      0.658      0.377      0.438      0.199
+               cyclist        154        333      0.496      0.219      0.228      0.105
+Speed: 0.2ms preprocess, 1.3ms inference, 0.0ms loss, 1.1ms postprocess per image
+Results saved to /kaggle/working/runs/detect/bdd100k_improved
+Generating final metrics and evaluation plots...
+Ultralytics 8.4.174 🚀 Python-3.13.15 torch-2.11.0+cu128 CUDA:0 (Tesla T4, 14912MiB)
+Model summary (fused): 72 layers, 3,006,623 parameters, 0 gradients, 8.1 GFLOPs
+WARNING ⚠️ val: Slow image access detected (ping: 0.0±0.0 ms, read: 47.3±22.1 MB/s, size: 57.2 KB). Use local storage instead of remote/mounted storage for better performance. See https://docs.ultralytics.com/guides/model-training-tips
+val: Scanning /kaggle/working/bdd100k_pipeline/val/labels.cache... 2000 images, 16 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 2000/2000 645.3Mit/s 0.0s
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 125/125 8.8it/s 14.3s0.1s
+                   all       2000      24553      0.567      0.415      0.438      0.258
+                   car       1974      20289      0.668      0.637       0.67      0.398
+                   bus        247        311      0.441      0.396      0.382      0.279
+                 truck        545        872      0.571      0.446      0.472       0.31
+            pedestrian        663       2748      0.655      0.376      0.437      0.199
+               cyclist        154        333      0.498      0.221      0.229      0.105
+Speed: 0.6ms preprocess, 2.3ms inference, 0.0ms loss, 1.1ms postprocess per image
+Results saved to /kaggle/working/runs/detect/eval_improved
+Securing final metrics for download...
+============================================================
+🎉 PIPELINE COMPLETE AND SECURED!
+============================================================
+Click here to download your project deliverables: /kaggle/working/bdd100k_final_results.zip
